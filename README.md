@@ -48,19 +48,6 @@ Mobile-friendly flashcard app for revising **OCR A-Level Religious Studies (H573
 - Tap a **topic chip** at the top to filter to one deck
 - Tap **Shuffle** (on the back of any card, or press S) to randomise the deck
 
-## Deploying to GitHub Pages
-
-1. Create a new repository on GitHub (e.g. `religious-studies-flashcards`)
-2. Upload `index.html`, `cards.js`, `app.js`, and `README.md` directly to the repo root (not inside a subfolder)
-3. Go to **Settings → Pages**
-4. Under "Build and deployment", set:
-   - Source: **Deploy from a branch**
-   - Branch: `main`, folder: `/ (root)`
-5. Click Save and wait a minute
-6. Visit `https://<your-username>.github.io/religious-studies-flashcards/`
-
-To add the site to a phone's home screen so it behaves like an app: in iOS Safari, tap the share icon → "Add to Home Screen". In Android Chrome, tap the three-dot menu → "Add to Home screen".
-
 ## Adding or editing cards
 
 Open `cards.js`. Each card is an object with `q` (question) and `a` (answer, HTML allowed):
