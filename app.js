@@ -1,5 +1,5 @@
 // ============================================
-// AQA Philosophy Flashcards · App Logic
+// OCR Religious Studies · App Logic
 // ============================================
 
 let currentTopic = 'all';
@@ -171,19 +171,19 @@ function onPointerUp(e) {
   const absDx = Math.abs(dx);
   const absDy = Math.abs(dy);
 
-  // Decision tree:
-  // 1. Small movement → TAP → flip
-  // 2. Dominant horizontal movement above threshold → SWIPE → navigate
-  // 3. Otherwise → ignore (was probably a vertical scroll on the answer)
+ // Decision tree:
+    // 1. Clear horizontal swipe → navigate
+    // 2. Vertical scroll inside the answer → ignore
+    // 3. Everything else (including small drifts) → tap → flip
 
-  if (!pointerMoved) {
-    // Pure tap — flip the card
-    flipCard();
-  } else if (absDx > SWIPE_THRESHOLD && absDx > absDy * SWIPE_RATIO && !isScrollingAnswer) {
-    if (dx < 0) nextCard();
-    else prevCard();
-  }
-  // else: scroll or ambiguous — do nothing
+    if (absDx > SWIPE_THRESHOLD && absDx > absDy * SWIPE_RATIO && !isScrollingAnswer) {
+      if (dx < 0) nextCard();
+      else prevCard();
+    } else if (isScrollingAnswer && absDy > absDx) {
+      // pure vertical scroll on answer — do nothing
+    } else {
+      flipCard();
+    }
 
   pointerStart = null;
   pointerMoved = false;
@@ -227,3 +227,20 @@ document.addEventListener('keydown', (e) => {
 resetOrder();
 renderTopics();
 renderCard();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
